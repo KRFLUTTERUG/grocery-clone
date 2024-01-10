@@ -5,7 +5,7 @@ import 'package:grocery_clone/constants/constants.dart';
 import 'package:grocery_clone/views/entrypoint.dart';
 
 
-Widget defaultHome = const MainScreen();
+Widget defaultHome = MainScreen();
 
 void main() {
   runApp(const MyApp());
