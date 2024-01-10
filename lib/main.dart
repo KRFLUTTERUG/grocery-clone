@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:grocery_clone/constants/constants.dart';
+import 'package:grocery_clone/views/entrypoint.dart';
+
+
+Widget defaultHome = const MainScreen();
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +32,7 @@ class MyApp extends StatelessWidget {
             iconTheme: const IconThemeData(color: kDark),
             primarySwatch: Colors.grey
           ),
-          home: child,
+          home: defaultHome,
         );
       },
       child: const MyHomePage(title: 'First Methods'),
