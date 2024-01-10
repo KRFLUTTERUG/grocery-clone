@@ -11,55 +11,67 @@ class CustomAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
       height: 110.h,
       width: width,
       color: kOffWhite,
       child: Container(
         margin: EdgeInsets.only(top: 20.h),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  CircleAvatar(
-                    radius: 22.r,
-                    backgroundColor: kSecondary,
-                    backgroundImage: NetworkImage('https://www.woolha.com/media/2020/03/eevee.png'),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                CircleAvatar(
+                  radius: 22.r,
+                  backgroundColor: kSecondary,
+                  backgroundImage: NetworkImage(
+                      'https://www.woolha.com/media/2020/03/eevee.png'),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 6.h, left: 8.w),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ReusableText(
+                          text: "Deliver to",
+                          style: appStyle(13, kSecondary, FontWeight.w600)),
+                      SizedBox(
+                        width: width * 0.65,
+                        child: Text(
+                          "16768 21st Ave N Plymouth MN 55447",
+                          overflow: TextOverflow.ellipsis,
+                          style: appStyle(11, kGrayLight, FontWeight.normal),
+                        ),
+                      )
+                    ],
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 6.h, left: 8.w),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ReusableText(
-                            text: "Deliver to",
-                            style: appStyle(13, kSecondary, FontWeight.w600)),
-                        SizedBox(
-                          width: width * 0.65,
-                          child: Text(
-                            "16768 21st Ave N Plymouth MN 55447",
-                            overflow: TextOverflow.ellipsis,
-                            style: appStyle(11, kGrayLight, FontWeight.normal),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  const Text(
-                    "*",
-                    style: TextStyle(fontSize: 35),
-                  )
-                ],
-              ),
-            ],
-          ),
+                ),
+                Text(
+                  getTimeOfDay(),
+                  style: TextStyle(fontSize: 35),
+                )
+              ],
+            ),
+          ],
         ),
       ),
     );
+  }
+
+  String getTimeOfDay() {
+    DateTime now = DateTime.now();
+    int hour = now.hour;
+
+    if (hour >= 0 && hour < 12) {
+      return '☀️';
+    } else if (hour >= 12 && hour < 16) {
+      return '⛅';
+    } else {
+      return '🌙';
+    }
   }
 }
