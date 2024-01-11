@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grocery_clone/constants/constants.dart';
 import 'package:grocery_clone/constants/uidata.dart';
+import 'package:grocery_clone/views/home/widgets/food_widget.dart';
 
 class FoodsList extends StatelessWidget {
   const FoodsList({Key? key}) : super(key: key);
@@ -17,11 +18,13 @@ class FoodsList extends StatelessWidget {
           var food = foods[index];
           return Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
-              height: 200.h,
-              width: 150.w,
-              color: kPrimary,
-            ),
+            child: FoodWidget(
+              image: food['imageUrl'],
+              time: food['time'],
+              title: food['title'],
+              price: food['price'].toStringAsFixed(2),
+              onTap: () {},
+            )
           );
         }),
       ),

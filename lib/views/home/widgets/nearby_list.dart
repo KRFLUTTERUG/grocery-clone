@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grocery_clone/constants/constants.dart';
 import 'package:grocery_clone/constants/uidata.dart';
+import 'package:grocery_clone/views/home/widgets/restaurant_widget.dart';
 
 class NearbyRestaurants extends StatelessWidget {
   const NearbyRestaurants({Key? key}) : super(key: key);
@@ -16,13 +17,15 @@ class NearbyRestaurants extends StatelessWidget {
         children: List.generate(restaurants.length, (index) {
           var restaurant = restaurants[index];
           return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              height: 200.h,
-              width: 150.w,
-              color: kPrimary,
-            ),
-          );
+              padding: const EdgeInsets.all(8.0),
+              child: RestaurantWidget(
+                image: restaurant['imageUrl'],
+                logo: restaurant['logoUrl'],
+                title: restaurant['title'],
+                time: restaurant['time'],
+                rating: restaurant['ratingCount'],
+                onTap: () {},
+              ));
         }),
       ),
     );
