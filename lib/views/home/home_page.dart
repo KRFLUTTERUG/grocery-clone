@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:grocery_clone/common/custom_appbar.dart';
 import 'package:grocery_clone/common/custom_container.dart';
 import 'package:grocery_clone/constants/constants.dart';
+import 'package:grocery_clone/views/home/recommendations.dart';
 import 'package:grocery_clone/views/home/widgets/category_list.dart';
+import 'package:grocery_clone/views/home/widgets/food_list.dart';
+import 'package:grocery_clone/views/home/widgets/nearby_list.dart';
 
 import '../../common/heading.dart';
+import 'all_fastest_foods.dart';
+import 'all_nearby_restaurants.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -23,16 +29,31 @@ class HomePage extends StatelessWidget {
               CategoryList(),
               Heading(
                 text: "Nearby Restaurants",
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => AllNearbyRestaurants(),
+                      transition: Transition.cupertino,
+                      duration: Duration(milliseconds: 900));
+                },
               ),
+              NearbyRestaurants(),
               Heading(
                 text: "Try Something New",
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => Recommendations(),
+                      transition: Transition.cupertino,
+                      duration: Duration(milliseconds: 900));
+                },
               ),
+              FoodsList(),
               Heading(
                 text: "Food Closer to you",
-                onTap: () {},
-              )
+                onTap: () {
+                  Get.to(() => AllFastestFoods(),
+                      transition: Transition.cupertino,
+                      duration: Duration(milliseconds: 900));
+                },
+              ),
+              FoodsList(),
             ],
           )),
         ));
