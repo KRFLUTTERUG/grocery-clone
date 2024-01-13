@@ -64,7 +64,7 @@ class RestaurantTile extends StatelessWidget {
                     width: 10.w,
                   ),
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ReusableText(
@@ -75,11 +75,39 @@ class RestaurantTile extends StatelessWidget {
                           style: appStyle(11, kGray, FontWeight.w400)),
                       SizedBox(
                         width: width * 0.7,
-                        child: Text(restaurant['coords']['address'], style: appStyle(9, kGray, FontWeight.w400),),
+                        child: Text(
+                          restaurant['coords']['address'],
+                          overflow: TextOverflow.ellipsis,
+                          style: appStyle(9, kGray, FontWeight.w400),
+                        ),
                       )
                     ],
                   )
                 ],
+              ),
+            ),
+          ),
+          Positioned(
+            right: 5.w,
+            top: 6.h,
+            child: Container(
+              width: 60.w,
+              height: 19.h,
+              decoration: BoxDecoration(
+                color: restaurant['isAvailable'] == true ||
+                        restaurant['isAvailable'] != null
+                    ? kPrimary
+                    : kSecondaryLight,
+                borderRadius: BorderRadius.circular(10.r),
+              ),
+              child: Center(
+                child: ReusableText(
+                  text: restaurant['isAvailable'] == true ||
+                          restaurant['isAvailable'] != null
+                      ? 'Open'
+                      : 'Close',
+                  style: appStyle(12, kDark, FontWeight.bold),
+                ),
               ),
             ),
           )

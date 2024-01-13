@@ -26,13 +26,13 @@ class AllNearbyRestaurants extends StatelessWidget {
           child: BackGroundContainer(
             color: Colors.white,
             child: Padding(
-              padding: EdgeInsets.all(12.h),
+              padding: EdgeInsets.all(4.h),
               child: ListView(
-                scrollDirection: Axis.horizontal,
+                scrollDirection: Axis.vertical,
                 children: List.generate(restaurants.length, (index) {
                   var restaurant = restaurants[index];
                   return Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(2.0),
                       child: RestaurantTile(
                         restaurant: restaurant,
                       ));
